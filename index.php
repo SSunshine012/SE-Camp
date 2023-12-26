@@ -1,19 +1,24 @@
 <html>
-
+    <br><br><br><br>
+    <form action="<?=$_SERVER['PHP_SELF'];?>" method="POST">
+    <input type="number" name="number">
+    <input type="submit" value="ค้นหาแม่สูตรคูณ">
+    <br><br><br><br><br>
+    </form>
 <head>
     <meta charset="utf-8">
 </head>
 
 <body>
-    <?php $multi_x = 2; ?>
-    <br><br>
-    <h1>ตารางสูตรคูณแม่ <?php echo $multi_x ?></h1>
-    <br><br><br><br>
     <div class="box"> 
         <?php
-        for($i=1;$i<=24;$i++){
-            echo $multi_x ." x ". $i. " = ". $multi_x*$i."<br>";
-        }
+            isset( $_POST['number'] ) ? $number = $_POST['number'] : $number = "";
+            if( !empty( $number ) ) {
+                echo "<b>สูตรคูณแม่ : $number </b><hr>" ;
+                for( $i=1; $i<=24; $i++ ) {
+                    echo "<br/>{$number} x {$i} = ".( $number * $i );
+                }
+            }
         ?>
     </div>
     <style>
@@ -28,14 +33,18 @@
             display: flex;
             align-items: center;
             flex-direction: column;
+            background-color: pink;
         }
         .box{
             width: 300px;
             height: 400px;
             overflow-y: scroll;
-            font-size: 30px;
+            font-size: 25px;
+            background-color: whitesmoke;           
+        }
+        .box:hover {
+            background-color:white;
         }
     </style>
 </body>
-
 </html>
